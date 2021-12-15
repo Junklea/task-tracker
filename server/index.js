@@ -1,33 +1,18 @@
-const express = require("express");
+import express, { json } from "express";
+import cors from "cors";
+// import pool from './db.js'
+
 const app = express();
-const port = 3001;
+const PORT = process.env.PORT || 5000;
+const corsOptions = { origin: process.env.URL || "*" };
 
-const { Pool, Client } = require("pg");
+app.use(cors(corsOptions));
+app.use(json());
 
-const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "taskdb",
-  password: "postgres",
-  port: 5432,
+app.get("/tasks", (req, res) => {
+  res.json("Hello");
 });
 
-pool.query("SELECT * FROM tasks", (err, res) => {
-  if (err) {
-    console.error(err);
-    pool.end();
-  } else {
-    console.log(res.rows);
-    pool.end();
-  }
-});
-
-console.log("Start");
-
-app.get("/", (req, res) => {
-  res.send("<h1>Hello World</h1>");
-});
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+app.listen(PORT, (err) => {
+  console.log(`Server started on http://localhost:${PORT}`);
 });
