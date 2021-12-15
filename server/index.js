@@ -1,16 +1,22 @@
-import express, { json } from "express";
-import cors from "cors";
-// import pool from './db.js'
+const express = require("express");
+const cors = require("cors");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const corsOptions = { origin: process.env.URL || "*" };
 
 app.use(cors(corsOptions));
-app.use(json());
+app.use(express.json());
 
-app.get("/tasks", (req, res) => {
-  res.json("Hello");
+const { query } = require("./db");
+
+app.get("/tasks", async (req, res) => {
+  try {
+    const tasks = await query("SELECT * FROM tasks;");
+    res.json(tasks.rows);
+  } catch (error) {
+    console.error(error.message);
+  }
 });
 
 app.listen(PORT, (err) => {
