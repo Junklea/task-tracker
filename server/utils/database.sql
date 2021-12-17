@@ -1,3 +1,21 @@
+DROP TABLE users;
+
+CREATE TABLE IF NOT EXISTS users(
+  id SERIAL PRIMARY KEY,
+  uuid uuid DEFAULT uuid_generate_v4(),
+  username TEXT NOT NULL UNIQUE,
+  password TEXT NOT NULL
+);
+
+INSERT INTO users (username, password)
+VALUES
+('a', 'a'),
+('b', 'b'),
+('c', 'c'),
+('d', 'd');
+
+SELECt * FROM users;
+
 DROP TABLE tasks;
 
 CREATE TABLE IF NOT EXISTS tasks(
