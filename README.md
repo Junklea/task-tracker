@@ -9,6 +9,8 @@
 - Express
 - PostgreSQL
 
+## TODO
+
 - [x] Backend to make the data persistent
 - [ ] Implement jwt and user system
 - [ ] Implement user task relationship
