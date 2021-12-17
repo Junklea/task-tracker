@@ -1,4 +1,13 @@
-Task Tracker App Build with React
+# Task Tracker App
+
+## Front End
+
+- React
+
+## Back End
+
+- Express
+- PostgreSQL
 
 - [x] Backend to make the data persistent
 - [ ] Implement jwt and user system
