@@ -19,12 +19,12 @@ router.post("/login", async (req, res) => {
     if (!validPassword)
       return res.status(401).json({ error: "Incorrect password" });
     let tokens = jwtTokens(users.rows[0].uuid);
-    // res.cookie("refresh_token", tokens.refreshToken, {
-    //   ...(process.env.COOKIE_DOMAIN && { domain: process.env.COOKIE_DOMAIN }),
-    //   httpOnly: true,
-    //   sameSite: "none",
-    //   secure: true,
-    // });
+    res.cookie("refresh_token", tokens.refreshToken, {
+      ...(process.env.COOKIE_DOMAIN && { domain: process.env.COOKIE_DOMAIN }),
+      httpOnly: true,
+      sameSite: "none",
+      secure: true,
+    });
     res.json(tokens);
   } catch (error) {
     res.status(401).json({ error: error.message });
