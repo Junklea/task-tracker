@@ -9,6 +9,10 @@ const app = express();
 
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("<h1>Hello World</h1>");
+});
+
 app.use("/tasks", tasksRouter);
 app.use("/users", usersRouter);
 app.use("/auth", authRouter);
