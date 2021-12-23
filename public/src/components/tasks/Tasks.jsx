@@ -17,21 +17,21 @@ const Tasks = () => {
   }, []);
 
   const fetchTasks = async () => {
-    const res = await fetch("http://http://20.113.29.15:5000/tasks");
+    const res = await fetch("/tasks");
     const data = await res.json();
 
     return data;
   };
 
   const fetchTask = async (id) => {
-    const res = await fetch(`http://http://20.113.29.15:5000/tasks/${id}`);
+    const res = await fetch(`/tasks/${id}`);
     const data = await res.json();
 
     return data;
   };
 
   const addTask = async (task) => {
-    const res = await fetch("http://http://20.113.29.15:5000/tasks", {
+    const res = await fetch("/tasks", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -45,7 +45,7 @@ const Tasks = () => {
   };
 
   const deleteTask = async (id) => {
-    const res = await fetch(`http://http://20.113.29.15:5000/tasks/${id}`, {
+    const res = await fetch(`/tasks/${id}`, {
       method: "DELETE",
     });
     res.status === 200
@@ -59,7 +59,7 @@ const Tasks = () => {
 
     console.log(updTask);
 
-    const res = await fetch(`http://http://20.113.29.15:5000/tasks/${id}`, {
+    const res = await fetch(`/tasks/${id}`, {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
