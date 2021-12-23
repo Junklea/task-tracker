@@ -8,7 +8,7 @@ const authRouter = require("./routes/auth");
 
 const app = express();
 
-const corsOptions = { origin: process.env.URL || "*" };
+const corsOptions = { origin: process.env.URL || "http://tarikerkan.com" };
 app.use(cors(corsOptions));
 app.use(express.json());
 
