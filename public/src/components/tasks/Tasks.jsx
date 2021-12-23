@@ -57,8 +57,6 @@ const Tasks = () => {
     const taskToToggle = await fetchTask(id);
     const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
 
-    console.log(updTask);
-
     const res = await fetch(`/tasks/${id}`, {
       method: "PUT",
       headers: {
