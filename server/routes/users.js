@@ -1,11 +1,11 @@
 const express = require("express");
 const argon2 = require("argon2");
-
+const authenticateToken = require("../middlewares/authMiddleware");
 const router = express.Router();
 
 const { query } = require("../db");
 
-router.get("/", async (req, res) => {
+router.get("/", authenticateToken, async (req, res) => {
   try {
     console.log(req.cookies);
     const users = await query("SELECT * FROM users");
