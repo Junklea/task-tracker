@@ -2,6 +2,7 @@
   "name": "task-tracker",
   "version": "0.1.0",
   "private": true,
+  "homepage": "tt",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^11.2.7",
