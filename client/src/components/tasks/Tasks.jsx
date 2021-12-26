@@ -17,21 +17,21 @@ const Tasks = () => {
   }, []);
 
   const fetchTasks = async () => {
-    const res = await fetch("http://20.113.29.15/api/tasks");
+    const res = await fetch("http://20.113.29.15/tt/api/tasks");
     const data = await res.json();
 
     return data;
   };
 
   const fetchTask = async (id) => {
-    const res = await fetch(`http://20.113.29.15/api/tasks/${id}`);
+    const res = await fetch(`http://20.113.29.15/tt/api/tasks/${id}`);
     const data = await res.json();
 
     return data;
   };
 
   const addTask = async (task) => {
-    const res = await fetch("http://20.113.29.15/api/tasks", {
+    const res = await fetch("http://20.113.29.15/tt/api/tasks", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -45,7 +45,7 @@ const Tasks = () => {
   };
 
   const deleteTask = async (id) => {
-    const res = await fetch(`http://20.113.29.15/api/tasks/${id}`, {
+    const res = await fetch(`http://20.113.29.15/tt/api/tasks/${id}`, {
       method: "DELETE",
     });
     res.status === 200
@@ -57,7 +57,7 @@ const Tasks = () => {
     const taskToToggle = await fetchTask(id);
     const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
 
-    const res = await fetch(`http://20.113.29.15/api/tasks/${id}`, {
+    const res = await fetch(`http://20.113.29.15/tt/api/tasks/${id}`, {
       method: "PUT",
       headers: {
         "Content-type": "application/json",

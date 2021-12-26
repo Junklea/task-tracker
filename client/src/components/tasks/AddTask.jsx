@@ -13,7 +13,11 @@ const AddTask = ({ onAdd }) => {
       return;
     }
 
-    onAdd({ text, day, reminder });
+    if (text.length > 100) {
+      alert("Text is too long");
+    } else {
+      onAdd({ text, day, reminder });
+    }
 
     setText("");
     setDay("");
